@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09 
+
+Resources:
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      AutoVerifiedAttributes:
+        - email
+      UsernameAttributes:
+        - email
+      UserPoolName: !Sub app_pool1
+      Schema:
+        - AttributeDataType: String
+          Mutable: true
+          Name: name
+          Required: true
+          
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      AccessTokenValidity: 60 # (minutes) default value.
+      AllowedOAuthFlowsUserPoolClient: true
+      AllowedOAuthFlows:
+        - code
+        - implicit
+      AllowedOAuthScopes:
+        - aws.cognito.signin.user.admin
+        - email
+
+      CallbackURLs:
+        - !Sub "http://localhost:8000/home.html"
+      ClientName: !Sub homestyle
+      EnableTokenRevocation: true # default value.
+      ExplicitAuthFlows:
+        - ALLOW_CUSTOM_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_SRP_AUTH
+      IdTokenValidity: 60 # (minutes) default value.
+      PreventUserExistenceErrors: ENABLED # default value.
+      RefreshTokenValidity: 30 # (days) default value.
+      SupportedIdentityProviders:
+        - COGNITO
+      TokenValidityUnits:
+        AccessToken: minutes
+        IdToken: minutes
+        RefreshToken: days
+      UserPoolId: !Ref us-east-1_WD8wX51gU
+      
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      Domain: !Ref https://homestyle.auth.us-east-1.amazoncognito.com
+      UserPoolId: !Ref us-east-1_WD8wX51gU
