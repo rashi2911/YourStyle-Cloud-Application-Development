@@ -9,6 +9,11 @@ AWS services Integrated:
 - AWS EC2 Auto Scaling groups
 - AWS Elastic Load Balancer
 
+## DEMO OF THE PROJECT
+
+https://user-images.githubusercontent.com/107244393/232896898-902e7215-8e81-4674-9303-40d3d18aa307.mp4
+
+
 ## Design of the Project
 
 ![image](https://user-images.githubusercontent.com/107244393/232892817-da582923-2eef-43cc-a82d-9ce4e606132c.png)
@@ -62,6 +67,8 @@ Now copy the public IPv4 address from the instance details and add port 8000 at 
 
 Once the user is successfully authenticated using AWS Cognito, they will be navigated to the main page of the website.
 ![image](https://user-images.githubusercontent.com/107244393/232894795-958c697f-a9d8-4c0d-b147-810a323ad7a6.png)
+
+Further Elastic Load Balancer and EC2 Auto Scaling groups are linked to the the EC2 instance providing scalability and reliability.
 
 ## Big-data-analytics of Amazon Review Dataset based on Digital Music Purchase ( hadoop folder )
 We are analysing Amazon review data using Pyspark which can provide a scalable, flexible, and fast way to gain valuable insights into customer behaviour and sentiment. These insights can help inform marketing and product development strategies, ultimately leading to improved business performance and customer satisfaction.
