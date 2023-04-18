@@ -8,3 +8,88 @@ AWS services Integrated:
 - AWS EC2 (For application deployment)
 - AWS EC2 Auto Scaling groups
 - AWS Elastic Load Balancer
+
+## Design of the Project
+
+![image](https://user-images.githubusercontent.com/107244393/232892817-da582923-2eef-43cc-a82d-9ce4e606132c.png)
+
+
+![image](https://user-images.githubusercontent.com/107244393/232892745-4c21adcf-b738-40ed-b323-53b913fdfcca.png)
+
+
+## Features of the project:
+-	Authentication System
+-	Browsing products on the website
+-	Viewing Product details
+-	Adding products to cart
+-	Getting the total amount for the products selected in cart
+-	Successfully placing order of the selected items in the cart
+
+
+## How to run the project?
+> python server.py
+
+## Multi-Threaded HTTP Web-Server Implementation
+
+A multithreaded HTTP web server which will run multiple and individual threads for the server and client side, will start a new thread each time a client accesses the website. After starting the HTTP web server, HTML,CSS and JS files are rendered defined in requestHandler.py
+The server is stopped when a critical error occurs.
+ 
+## Testing Multi-threading feature
+> python multithreading.py n
+
+Here, n is the number of worker threads you want to spawn for conformance and stress tests on GET,PUT and DELETE HTTP requests.
+
+## AWS Cognito Integration 
+
+1. Change the URL mentioned in the index.html
+"https://homestyle.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=5icc2b3ks47a43hopdmbdoeqer&redirect_uri=http://localhost:8000/home.html"
+
+2. Configure homestyle-cognito.yaml
+Here,change the parameters: UserPoolName,CallBackURLs,UserPoolId,Domain
+
+AWS cognito api is fetched which presents the the sign up page to the user. 
+![image](https://user-images.githubusercontent.com/107244393/232894061-1a292cb5-946c-434f-bdc1-cc350a358089.png)
+![image](https://user-images.githubusercontent.com/107244393/232894110-f2139fa8-bbf6-49ad-9dcd-710aa5ddb515.png)
+
+
+## AWS Deployment
+The application is deployed on AWS EC2 instance using Ubuntu canonical AMI. The instance is created inside a VPC, which will provide security and isolation to the application. Security rules like TCP connection on port 8000, SSH were defined. 
+We’ll connect to the instance using Putty and copy the files from our local desktop to the remote instance by establishing a remote connection using WinSCP SMTP protocol. Once the files are transferred, install requirements.txt on the instance terminal and launch the application using: python server.py.
+![image](https://user-images.githubusercontent.com/107244393/232894617-7d34ddd5-3512-415e-85fe-26df8391e29e.png)
+
+Now copy the public IPv4 address from the instance details and add port 8000 at the end of the address and run it on browser. You can see that the application is now successfully running on the AWS Cloud.
+![image](https://user-images.githubusercontent.com/107244393/232894690-00689c27-9928-4ff9-8db9-b6840ced32d4.png)
+
+Once the user is successfully authenticated using AWS Cognito, they will be navigated to the main page of the website.
+![image](https://user-images.githubusercontent.com/107244393/232894795-958c697f-a9d8-4c0d-b147-810a323ad7a6.png)
+
+## Big-data-analytics of Amazon Review Dataset based on Digital Music Purchase ( hadoop folder )
+We are analysing Amazon review data using Pyspark which can provide a scalable, flexible, and fast way to gain valuable insights into customer behaviour and sentiment. These insights can help inform marketing and product development strategies, ultimately leading to improved business performance and customer satisfaction.
+
+Steps performed for incorporating Big Data Analytics in this project are:
+1.	I chose dataset of Digital Music purchase reviews of Amazon. 
+![image](https://user-images.githubusercontent.com/107244393/232896192-12fc3023-d8a9-4798-a347-d52a1282815f.png)
+
+2.	Then Extract the Amazon review data of digital music purchase from the URL of object uploaded in AWS S3 bucket.
+![image](https://user-images.githubusercontent.com/107244393/232896257-21601416-8f64-4c81-ab3f-47d7941898c9.png)
+
+ 
+3.	Transform the extracted the data type of several columns in the "digital_music_reviews_df" dataframe to the specified data types. Transform Data was then transformed(cleaned) before tables were created using our PgAdmin SQL schema for reference.
+ ![image](https://user-images.githubusercontent.com/107244393/232896301-a3f1d341-152c-4e08-9476-9a6680074776.png)
+
+4.	Load the data frames to RDS database. Each table that was created above was then loaded onto the PgAdmin using AWS's RDS connection I created.
+![image](https://user-images.githubusercontent.com/107244393/232896349-4568309a-9f93-4d81-b4e2-cac86d818d56.png)
+
+
+## Map-reduce implementation on .txt file ( map-reduce folder )
+We first transfer the python files for mapper.py and reducer.py from our local machine to the remote host. Also download an ebook .txt file to test out the functionality of the python files written. 
+Now set the python path in each of the python files at the top. If you are not sure of the python path type in the command: which python3 (this will give the path).
+> cat /home/ubuntu/Beam-Private-George-O---Geor-[ebooksread.com].txt | /home/ubuntu/mapper.py
+
+![image](https://user-images.githubusercontent.com/107244393/232896624-845fdf3d-2bcf-4964-b881-ab144481e31a.png)
+
+
+
+## Docker Deployment
+> docker build -t <image_name> .
+> docker run -it <image_id>
