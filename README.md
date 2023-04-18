@@ -99,4 +99,5 @@ Now set the python path in each of the python files at the top. If you are not s
 
 ## Docker Deployment
 > docker build -t <image_name> .
+
 > docker run -it <image_id>
