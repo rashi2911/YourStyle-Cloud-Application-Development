@@ -71,6 +71,15 @@ Once the user is successfully authenticated using AWS Cognito, they will be navi
 ![image](https://user-images.githubusercontent.com/107244393/232894795-958c697f-a9d8-4c0d-b147-810a323ad7a6.png)
 
 Further Elastic Load Balancer and EC2 Auto Scaling groups are linked to the the EC2 instance providing scalability and reliability.
+- Elastic Load Balancer:
+![image](https://user-images.githubusercontent.com/107244393/232976887-5fa44948-9c23-446a-a251-95b59eb7fe9e.png)
+![image](https://user-images.githubusercontent.com/107244393/232976914-5ff24969-5e96-41dd-a37d-1047d07c4519.png)
+
+- EC2 Auto-Scaling Group
+Create a launch template for the auto scaling group and configure 6 availability zones wherein the instances of the auto-scaling group will be deployed.Now once the auto scaling group is created, we can browse to its activity history and see that as the desired capacity is set to 2, two new instances are launched in different availability zones of the same configuration as that of the originally created instance. This can be checked by navigating to the Instance dashboard of EC2 , wherein we can see that three instances are now up and running. 
+![image](https://user-images.githubusercontent.com/107244393/232977372-4cb0df53-e03e-4bc3-b5c0-0f056ad4327d.png)
+![image](https://user-images.githubusercontent.com/107244393/232977416-9576a53c-e8c4-4f3c-b2b6-d3b8ea646bf2.png)
+
 
 ## Big-data-analytics of Amazon Review Dataset based on Digital Music Purchase ( hadoop folder )
 We are analysing Amazon review data using Pyspark which can provide a scalable, flexible, and fast way to gain valuable insights into customer behaviour and sentiment. These insights can help inform marketing and product development strategies, ultimately leading to improved business performance and customer satisfaction.
