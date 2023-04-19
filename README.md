@@ -61,6 +61,8 @@ AWS cognito api is fetched which presents the the sign up page to the user.
 The application is deployed on AWS EC2 instance using Ubuntu canonical AMI. The instance is created inside a VPC, which will provide security and isolation to the application. Security rules like TCP connection on port 8000, SSH were defined. 
 We’ll connect to the instance using Putty and copy the files from our local desktop to the remote instance by establishing a remote connection using WinSCP SMTP protocol. Once the files are transferred, install requirements.txt on the instance terminal and launch the application using: python server.py.
 ![image](https://user-images.githubusercontent.com/107244393/232894617-7d34ddd5-3512-415e-85fe-26df8391e29e.png)
+![image](https://user-images.githubusercontent.com/107244393/232976163-5423c1c0-5353-436a-835f-16a96d5c1670.png)
+
 
 Now copy the public IPv4 address from the instance details and add port 8000 at the end of the address and run it on browser. You can see that the application is now successfully running on the AWS Cloud.
 ![image](https://user-images.githubusercontent.com/107244393/232894690-00689c27-9928-4ff9-8db9-b6840ced32d4.png)
@@ -100,4 +102,9 @@ Now set the python path in each of the python files at the top. If you are not s
 ## Docker Deployment
 > docker build -t <image_name> .
 
+![image](https://user-images.githubusercontent.com/107244393/232976520-2c3a728b-580d-4198-93de-ac7cec2138db.png)
+
 > docker run -it <image_id>
+
+![image](https://user-images.githubusercontent.com/107244393/232976576-68ae25f9-40ad-4173-a191-ba198a0ead6c.png)
+
